@@ -23,7 +23,7 @@ namespace Portofolio.App_Start
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-spacelab.css",
+                      "~/Content/bootstrap.css",
                       "~/Content/Site.css"));
         }
     }
