@@ -1,17 +1,14 @@
 ﻿<nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">WebSiteName</a>
+            <a class="navbar-brand" href="#">Zayeland.net</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Page 1</a></li>
-            <li><a href="#">Page 2</a></li>
+            <li class="active"><a href="#">@Html.ActionLink("Portofolio", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</a></li>
+            <li><a href="#">@Html.ActionLink("Home", "Index", "Home")</a></li>
+            <li><a href="#">@Html.ActionLink("About", "About", "Home")</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        </ul>
+        @Html.Partial("_LoginPartial")
         <form class="navbar-form navbar-right" action="/action_page.php">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Search">

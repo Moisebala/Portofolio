@@ -1,4 +1,13 @@
 ﻿<ul class="nav navbar-nav navbar-right">
-    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+
+    <li>
+        <a href="@Url.Action("Register", "Account")">
+            <span class="glyphicon glyphicon-user "></span> Sign up
+        </a>
+    </li>
+    <li>
+        <a href="@Url.Action("Login", "Account")">
+            <span class="glyphicon glyphicon-log-in "></span> Log in
+        </a>
+    </li>
 </ul>
