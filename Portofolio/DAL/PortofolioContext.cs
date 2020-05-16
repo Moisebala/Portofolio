@@ -10,7 +10,8 @@ namespace Portofolio.DAL
         public PortofolioContext() : base("PortofolioContext")
         {
         }
-        public DbSet<User> Utilisateur { get; set; }
+        public DbSet<User> Utilisateurs { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

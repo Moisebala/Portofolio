@@ -83,7 +83,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PortofolioServicesTest.cs" />
+    <Compile Include="PortofolioTest\PortofolioServicesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

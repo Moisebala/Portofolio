@@ -23,7 +23,20 @@ namespace Portofolio
 
         public List<User> ObtientTousLesUtilisateurs()
         {
-            return bdd.Utilisateur.ToList();
+            return bdd.Utilisateurs.ToList();
+        }
+
+        public User CreerUtilisateur(string nom, string identifiant, string motdepasse, TypeEnum type)
+        {
+            User user = new User();
+            user.Nom = nom;
+            user.Identifiant = identifiant;
+            user.Motdepasse = motdepasse;
+            user.Type = type;
+      
+            bdd.Utilisateurs.Add(user);
+            bdd.SaveChanges();
+            return user; 
         }
 
     }

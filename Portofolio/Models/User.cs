@@ -12,7 +12,7 @@ namespace Portofolio.Models
         public string Prenom { get; set; }
         public string Identifiant { get; set; }
         public string Motdepasse { get; set; }
-        public string Type { get; set; }
-        public Contact contact { get; set; }
+        public TypeEnum Type { get; set; }
+        public virtual Contact contact { get; set; }
     }
 }

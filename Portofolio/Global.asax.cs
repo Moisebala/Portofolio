@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Portofolio.DAL;
 
 namespace Portofolio
 {
@@ -12,6 +13,7 @@ namespace Portofolio
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+           
         }
     }
 }
