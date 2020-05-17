@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Portofolio.Models;
+using Portofolio.ModelsView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,13 +10,35 @@ namespace Portofolio.Controllers
 {
     public class AccountController : Controller
     {
-        // GET: Account
-        public ActionResult Register()
-        {
-            return View();
-        }
+		private IDataAccess dal = new PortofolioServices();
 
-        public ActionResult Login()
+		[HttpGet]
+		public ActionResult Register()
+		{
+		
+			return View();
+		}
+		// GET: Account
+		[HttpPost]
+		public ActionResult Register(User user)
+        {  
+			dal.CreerUtilisateur(user.Nom, 
+				                 user.Prenom,
+				                 user.Identifiant, 
+								 user.Motdepasse, 
+								 user.Type);
+	
+			return View(user);
+		}
+
+		[HttpGet]
+		public ActionResult ListUser()
+		{
+
+			return View();
+		}
+
+		public ActionResult Login()
         {
             return View();
         }

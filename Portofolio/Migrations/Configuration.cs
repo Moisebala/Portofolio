@@ -17,9 +17,9 @@ namespace Portofolio.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-            context.Utilisateurs.AddOrUpdate(
-                new User { Nom = "Carson", Prenom = "Alexander", Identifiant = "CarsonA", Motdepasse = "1233456", Type = TypeEnum.Admin },
-                new User { Nom = "son", Prenom = "xander", Identifiant = "sonA", Motdepasse = "1233456", Type = TypeEnum.Stantard });
+           // context.Utilisateurs.AddOrUpdate(
+             //   new User { Nom = "Carson", Prenom = "Alexander", Identifiant = "CarsonA", Motdepasse = "1233456", Type = TypeEnum.Admin },
+               // new User { Nom = "son", Prenom = "xander", Identifiant = "sonA", Motdepasse = "1233456", Type = TypeEnum.Stantard });
         }
     }
 }

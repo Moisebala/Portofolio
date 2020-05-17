@@ -15,6 +15,8 @@ namespace Portofolio.Models
 		public string Nom { get; set; }
         public string Prenom { get; set; }
 		[Required]
+		[Index(IsUnique = true)]
+		[StringLength(50)]
 		public string Identifiant { get; set; }
 		[Required]
 		[StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

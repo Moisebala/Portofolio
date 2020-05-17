@@ -1,35 +1,52 @@
 ﻿
+@model Portofolio.ModelsView.LoginViewModel
 @{
-    ViewBag.Title = "Login";
+	ViewBag.Title = "Log in";
 }
 
-    <div class="container h-100">
-        <div class="row justify-content-center align-items-center h-100">
-            <div class="col col-sm-9 col-md-9 col-lg-5 col-xl-4">
-                <div class="card card-signin my-1">
-                    <div class="card-body">
-                        <form class="form-signin">
-                            <h1 class="h3 mb-3 font-weight-normal">Authentification </h1>
-                            <div class="form-label-group">
-                                <label for="inputEmail">Username </label>
-                                <input type="text" id="inputEmail" class="form-control" placeholder="Username" required autofocus>
-                            </div>
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+	<div class="col-md-8">
+		<section id="loginForm">
+			@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+			{
+				@Html.AntiForgeryToken()
+				<h4>Use a local account to log in.</h4>
+				<hr />
+				@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+				<div class="form-group">
+					@Html.LabelFor(m => m.Identifiant, new { @class = "col-md-2 control-label" })
+					<div class="col-md-10">
+						@Html.TextBoxFor(m => m.Identifiant, new { @class = "form-control" })
+						@Html.ValidationMessageFor(m => m.Identifiant, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(m => m.Motdepasse, new { @class = "col-md-2 control-label" })
+					<div class="col-md-10">
+						@Html.PasswordFor(m => m.Motdepasse, new { @class = "form-control" })
+						@Html.ValidationMessageFor(m => m.Motdepasse, "", new { @class = "text-danger" })
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<div class="checkbox">
+							@Html.CheckBoxFor(m => m.RememberMe)
+							@Html.LabelFor(m => m.RememberMe)
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Log in" class="btn btn-default" />
+					</div>
+				</div>
+			}
+		</section>
+	
+	</div>
+</div>
 
-                            <div class="form-label-group">
-                                <label for="inputPassword">Password</label>
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                            </div>
-
-                            <div class="checkbox mb-3">
-                                <label>
-                                    <input type="checkbox" value="remember-me"> Remember me
-                                </label>
-                            </div>
-                            <button class="btn  btn-primary" type="submit">Sign in</button>
-                            <p class="mt-5 mb-3 text-muted text-center"></p>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+@section Scripts {
+	@Scripts.Render("~/bundles/jqueryval")
+}
