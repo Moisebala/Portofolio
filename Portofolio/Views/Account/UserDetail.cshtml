@@ -1,0 +1,13 @@
+﻿@model Portofolio.Models.User
+@{
+	ViewBag.Title = "UserDetail";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Nom</h2>
+<ul>
+	<li>Nom: @Model.Nom</li>
+	<li>Prenom : @Model.Prenom</li>
+	<li>Identifiant : @Model.Identifiant</li>
+	<li>Type : @Model.Type</li>
+</ul>

@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Portofolio.Models
 {
-    public class Activite
+	[Table("Activite")]
+	public class Activite
     {
         public int Id { get; set; }
         public string NomActivite { get; set; }

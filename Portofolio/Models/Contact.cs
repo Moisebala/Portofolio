@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Portofolio.Models
 {
-    public class Contact
+	[Table("Contact")]
+	public class Contact
     {   public int Id { get; set; }
 
 		[EmailAddress]

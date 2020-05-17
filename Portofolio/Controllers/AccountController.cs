@@ -34,8 +34,17 @@ namespace Portofolio.Controllers
 		[HttpGet]
 		public ActionResult ListUser()
 		{
+			UserModelView list = new UserModelView();
+			list.Users = dal.ObtientTousLesUtilisateurs();
 
-			return View();
+			return View(list);
+		}
+
+
+		[HttpGet]
+		public ActionResult UserDetail(User  user)
+		{
+			return View(user);
 		}
 
 		public ActionResult Login()

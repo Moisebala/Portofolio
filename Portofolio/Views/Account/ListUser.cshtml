@@ -1,17 +1,16 @@
-﻿
+﻿@model Portofolio.ModelsView.UserModelView
 @{
 	ViewBag.Title = "ListUser";
+	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<ul>
+	@foreach (var user in Model.Users)
+	{
+		<li>@user.Nom</li>
+		<li>@user.Prenom</li>
+		<li>@user.Identifiant</li>
+	}
+</ul>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>La liste des utilisateurs</title>
-</head>
-<body>
-    <div> 
-    </div>
-</body>
-</html>
+
