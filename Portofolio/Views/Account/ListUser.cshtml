@@ -14,3 +14,30 @@
 </ul>
 
 
+<h2>Liste des Utilisateurs</h2>
+<p>
+	@Html.ActionLink("Nouvel Utilisateur", "Register", "Account", null, new { @class = "btn btn-primary" })
+</p>
+
+<table id="users" class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th>Nom</th>
+			<th>Prenom</th>
+			<th>Identifiant</th>
+			<th>Edition</th>
+		</tr>
+		@foreach (var user in Model.Users)
+		{
+		<tr>
+			<td>@user.Nom</td>
+			<td>@user.Prenom</td>
+			<td>@user.Identifiant</td>
+			<td>@Html.ActionLink("Modifier " + user.Identifiant, "Register", new { id = user.Id })</td>
+		</tr>
+	    }
+
+    </thead>
+	<tbody></tbody>
+</table>
+

@@ -88,8 +88,10 @@ namespace Portofolio
 			return null;
 		}
 
-
-
-
+		public void SupprimerUtilisateur(User user)
+		{
+			bdd.Utilisateurs.Remove(user);
+			bdd.SaveChanges();
+		}
 	}
 }

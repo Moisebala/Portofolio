@@ -13,6 +13,7 @@ namespace Portofolio.Models
 		bool UtilisateurExiste(string identifiant);
 		User ObtenirUtilisateur(int id);
 		User ObtenirUtilisateur(string idStr);
+		void SupprimerUtilisateur(User user);
 
 
 	}
