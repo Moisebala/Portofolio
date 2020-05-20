@@ -317,6 +317,7 @@
     <Content Include="Views\Account\ListUser.cshtml" />
     <Content Include="Views\Account\UserDetail.cshtml" />
     <Content Include="Views\Account\ModifierUser.cshtml" />
+    <Content Include="Views\Account\_userpartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

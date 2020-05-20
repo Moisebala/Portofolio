@@ -8,12 +8,11 @@ namespace Portofolio.ModelsView
 {
     public class UserModelView
     {
-		public List<User> Users { get; set; }
+		public  User User { get; set; }
 
-		public  UserModelView()
+		public  UserModelView(User user)
 		{
-			Users = new List<User>();
-
+			User = user;
 		}
 
 	}

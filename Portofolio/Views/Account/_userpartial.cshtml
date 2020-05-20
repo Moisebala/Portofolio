@@ -1,0 +1,15 @@
+﻿@model Portofolio.ModelsView.UserModelView
+
+<tr id="User-@Model.User.Id">
+
+	<td>@Model.User.Nom</td>
+	<td>@Model.User.Prenom</td>
+	<td>@Model.User.Identifiant</td>
+
+	<td>
+		<button name="supprimer-user" id="user-action-supprimer" class="btn btn-mini" type="button">Supprimer</button>
+
+		<button name="modifier-user" id="user-action-modifier" class="btn btn-mini" type="button">Modifier</button>
+
+	</td>
+</tr>

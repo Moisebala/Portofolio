@@ -1,4 +1,5 @@
-﻿using Portofolio.Models;
+﻿using dotless.Core.Loggers;
+using Portofolio.Models;
 using Portofolio.ModelsView;
 using System;
 using System.Collections.Generic;
@@ -34,10 +35,11 @@ namespace Portofolio.Controllers
 		[HttpGet]
 		public ActionResult ListUser()
 		{
-			UserModelView list = new UserModelView();
-			list.Users = dal.ObtientTousLesUtilisateurs();
+	
+			var users = dal.ObtientTousLesUtilisateurs();
+			var userViewModel = users.Select(user => new UserModelView(user)).ToList();
 
-			return View(list);
+			return View("~/Views/Account/ListUser.cshtml", userViewModel);
 		}
 
 
@@ -55,19 +57,30 @@ namespace Portofolio.Controllers
 
 		public ActionResult ModifierUser()
 		{
-			string id = Request.Url.AbsolutePath.Split('/').Last();
+		
+		    string id = Request.Url.AbsolutePath.Split('/').Last();
 			ViewBag.Id = id;
 			return View();
 		}
 
-		public ActionResult SupprimerUser(int id)
+		[HttpPost]
+		public ActionResult SupprimerUser()
 		{
+			var id = int.Parse(Request.Params["id"]);
 			var user = dal.ObtenirUtilisateur(id);
-			if (user != null)
+			try
 			{
+				if (user != null)
+			    {
 				dal.SupprimerUtilisateur(user);
+			    }
 			}
-			return View();
+			catch (Exception e)
+			{
+				Response.StatusCode = 403;
+			}
+
+			return Content("");
 		}
 	}
 }

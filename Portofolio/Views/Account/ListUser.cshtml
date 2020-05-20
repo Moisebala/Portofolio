@@ -1,43 +1,57 @@
-﻿@model Portofolio.ModelsView.UserModelView
+﻿@model List<Portofolio.ModelsView.UserModelView >
 @{
 	ViewBag.Title = "ListUser";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<ul>
-	@foreach (var user in Model.Users)
-	{
-		<li>@user.Nom</li>
-		<li>@user.Prenom</li>
-		<li>@user.Identifiant</li>
-	}
-</ul>
-
-
 <h2>Liste des Utilisateurs</h2>
 <p>
 	@Html.ActionLink("Nouvel Utilisateur", "Register", "Account", null, new { @class = "btn btn-primary" })
 </p>
+<div id="user-alert">
+</div>
+<div class="container">
+	<div class="row left">
+		<table id="users" class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Prenom</th>
+					<th>Identifiant</th>
+					<th>Action</th>
+				</tr>  
+			</thead>
+			<tbody>
+				<tr>
+				@foreach (var user in Model)
+				{
+					Html.RenderPartial("_userpartial", user);
+				}
+			</tbody>
+	  </table>
 
-<table id="users" class="table table-bordered table-hover">
-	<thead>
-		<tr>
-			<th>Nom</th>
-			<th>Prenom</th>
-			<th>Identifiant</th>
-			<th>Edition</th>
-		</tr>
-		@foreach (var user in Model.Users)
-		{
-		<tr>
-			<td>@user.Nom</td>
-			<td>@user.Prenom</td>
-			<td>@user.Identifiant</td>
-			<td>@Html.ActionLink("Modifier " + user.Identifiant, "Register", new { id = user.Id })</td>
-		</tr>
-	    }
+	</div>
+</div>
 
-    </thead>
-	<tbody></tbody>
-</table>
+<script type="text/javascript">
+	$(document).on("click", "button[name='supprimer-user']", function (e) {
 
+    var removeConfirmed = confirm("Are you sure that you want to remove SCM server");
+
+    if (removeConfirmed) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: '@Url.Action("SupprimerUser", "Account")',
+		data: "id=" + $(this).parents("tr").first().attr("id").replace("user-", ""),
+		context: this
+		})
+		.done(function () {
+		$(this).parents("tr").fadeOut("slow", function () { $(this).remove();});
+		})
+		.fail(function (data) {
+		$("#user-alert").append(data.responseText);
+		});
+		}
+	   });
+</script>
