@@ -57,7 +57,6 @@ namespace Portofolio.Controllers
 
 		public ActionResult ModifierUser()
 		{
-		
 		    string id = Request.Url.AbsolutePath.Split('/').Last();
 			ViewBag.Id = id;
 			return View();
