@@ -34,24 +34,31 @@
 </div>
 
 <script type="text/javascript">
-	$(document).on("click", "button[name='supprimer-user']", function (e) {
-
-    var removeConfirmed = confirm("Are you sure that you want to remove SCM server");
-
-    if (removeConfirmed) {
-      e.preventDefault();
-      $.ajax({
-        type: "POST",
-        url: '@Url.Action("SupprimerUser", "Account")',
-		data: "id=" + $(this).parents("tr").first().attr("id").replace("user-", ""),
-		context: this
-		})
-		.done(function () {
-		$(this).parents("tr").fadeOut("slow", function () { $(this).remove();});
-		})
-		.fail(function (data) {
-		$("#user-alert").append(data.responseText);
+	$(document).ready(function () {
+		//supprimer user
+		$(document).on("click", "button[name='supprimer-user']", function (e) {
+        var removeConfirmed = confirm("Are you sure that you want to delete User");
+        if (removeConfirmed) {
+		e.preventDefault();
+		$.ajax({
+          type: "POST",
+          url: '@Url.Action("SupprimerUser", "Account")',
+		  data: "id=" + $(this).parents("tr").first().attr("id").replace("user-", ""),
+		  context: this
+		  })
+		  .done(function () {
+	      $(this).parents("tr").fadeOut("slow", function () { $(this).remove(); });
+		   })
+		  .fail(function (data) {
+		   $("#user-alert").append(data.responseText);
+		   });
+		  }
 		});
-		}
-	   });
+
+		//Modifier un user 
+		$(document).on("click", "button[name='modifier-user']", function (e) {
+		e.preventDefault();
+		});
+
+});
 </script>
