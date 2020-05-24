@@ -7,7 +7,8 @@
 	<td>@Model.User.Identifiant</td>
 
 	<td>
-		<button name="modifier-user" id="user-action-modifier" class="btn btn-success" type="button">Modifier</button>
+		@Html.ActionLink("Edit", "ModifierUser", "Account", new { id = Model.User.Id }) |
+		@Html.ActionLink("Details", "UserDetail", new { id = Model.User.Id })  |
 
 		<button name="supprimer-user" id="user-action-supprimer" class="btn  btn-danger" type="button">Supprimer</button>
 	</td>

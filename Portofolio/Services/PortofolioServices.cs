@@ -75,7 +75,7 @@ namespace Portofolio
 			return BitConverter.ToString(new MD5CryptoServiceProvider().ComputeHash(ASCIIEncoding.Default.GetBytes(motDePasseSel)));
 		}
 
-		public User ObtenirUtilisateur(int id)
+		public User ObtenirUtilisateur(int? id)
 		{
 			return bdd.Utilisateurs.FirstOrDefault(u => u.Id == id);
 		}

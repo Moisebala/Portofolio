@@ -56,16 +56,6 @@
 		   }
 		});
 
-
-		//Modifier un user
-		$(document).on("click", "button[name='modifier-user']", function () {
-			$.ajax({
-				type: "GET",
-				url: '@Url.Action("Register", "Account")',
-				data: "",
-				context: this
-			});
-		   });
 	});
 
 </script>

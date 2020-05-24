@@ -4,6 +4,7 @@ using Portofolio.ModelsView;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -29,7 +30,7 @@ namespace Portofolio.Controllers
 								 user.Motdepasse,
 								 user.Type);
 
-			return RedirectToAction("Index", "Home");
+			return RedirectToAction("ListUser", "Account");
 		}
 
 		[HttpGet]
@@ -42,10 +43,13 @@ namespace Portofolio.Controllers
 			return View("~/Views/Account/ListUser.cshtml", userViewModel);
 		}
 
-
 		[HttpGet]
-		public ActionResult UserDetail(int id)
+		public ActionResult UserDetail(int? id )
 		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
 			var user = dal.ObtenirUtilisateur(id);
 			return View(user);
 		}
