@@ -1,20 +1,29 @@
 ﻿@model Portofolio.Models.User
 @{
-	ViewBag.Title = "UserDetail";
+	ViewBag.Title = Model.Nom;
 	Layout = "~/Views/Shared/_Layout.cshtml";
+	var email = Model.Contact?.Email;
 }
 
 <h2>@Model.Nom</h2>
+
 <ul>
 	<li>Nom: @Model.Nom</li>
-	<li>Prenom : @Model.Prenom</li>
-	<li>Identifiant : @Model.Identifiant</li>
-	<li>Type : @Model.Type</li>
-	<li>Type : @Model.contact.Email</li>
+	<li>Prenom: @Model.Prenom</li>
+	<li>Identifiant: @Model.Identifiant</li>
+	<li>Type: @Model.Type</li>
+	<li>Contact: @email</li>
+
+	<div class="list-group">
+		<a href="#" class="list-group-item">@Model.Nom</a>
+		<a href="#" class="list-group-item">Prenom: @Model.Prenom</a>
+		<a href="#" class="list-group-item">@Model.Identifiant</a>
+		<a href="#" class="list-group-item"> @Model.Type</a>
+	</div>
 
 	<li>
 		<a href="@Url.Action("ListUser", "Account")">
-			<span class="glyphicon glyphicon-step-backward "></span> Retour
+			<span class="glyphicon glyphicon-download "></span> Retour
 		</a>
 	</li>
 </ul>

@@ -25,6 +25,6 @@ namespace Portofolio.Models
 		public string Motdepasse { get; set; }
 		[Required]
 		public TypeEnum Type { get; set; }
-        public virtual Contact contact { get; set; }
+        public  virtual Contact Contact { get; set; }
     }
 }

@@ -1,11 +1,8 @@
-﻿using dotless.Core.Loggers;
-using Portofolio.Models;
+﻿using Portofolio.Models;
 using Portofolio.ModelsView;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Portofolio.Controllers

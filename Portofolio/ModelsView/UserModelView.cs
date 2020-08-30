@@ -9,10 +9,13 @@ namespace Portofolio.ModelsView
     public class UserModelView
     {
 		public  User User { get; set; }
+		
 
 		public  UserModelView(User user)
 		{
 			User = user;
+
+
 		}
 
 	}
