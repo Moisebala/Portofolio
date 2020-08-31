@@ -25,7 +25,9 @@ namespace Portofolio.Controllers
 								 user.Prenom,
 								 user.Identifiant,
 								 user.Motdepasse,
-								 user.Type);
+								 user.Type,
+								 user.Contact.Email,
+								 user.Contact.Telephone);
 
 			return RedirectToAction("ListUser", "Account");
 		}
@@ -48,7 +50,7 @@ namespace Portofolio.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 			var user = dal.ObtenirUtilisateur(id);
-			return View(user);
+			return PartialView("Userdetail",user);
 		}
 
 		public ActionResult Login()
@@ -56,11 +58,32 @@ namespace Portofolio.Controllers
 			return View();
 		}
 
-		public ActionResult ModifierUser()
+		[HttpGet]
+		public ActionResult ModifierUser(int? id)
 		{
-		    string id = Request.Url.AbsolutePath.Split('/').Last();
-			ViewBag.Id = id;
-			return View();
+
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+
+			var user = dal.ObtenirUtilisateur(id);
+			return View("ModifierUser", user);
+		}
+
+		[HttpPost]
+		public ActionResult ModifierUser(User user)
+		{
+			dal.ModifierUtilisateur(user.Id,
+				                    user.Nom, 
+				                    user.Prenom, 
+									user.Identifiant, 
+									user.Motdepasse,
+									user.Type,user.Contact.Email, 
+									user.Contact.Telephone);
+			// string id = Request.Url.AbsolutePath.Split('/').Last();
+			//ViewBag.Id = id;
+			return RedirectToAction("ListUser", "Account");
 		}
 
 		[HttpPost]

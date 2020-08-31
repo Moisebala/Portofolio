@@ -14,8 +14,6 @@ namespace Portofolio.ModelsView
 		public  UserModelView(User user)
 		{
 			User = user;
-
-
 		}
 
 	}

@@ -5,25 +5,64 @@
 	var email = Model.Contact?.Email;
 }
 
-<h2>@Model.Nom</h2>
 
+<div class="modal-header">
+	<h4 class="modal-title" id="myModalLabel">@Model.Nom</h4>
+</div>
 <ul>
-	<li>Nom: @Model.Nom</li>
-	<li>Prenom: @Model.Prenom</li>
-	<li>Identifiant: @Model.Identifiant</li>
-	<li>Type: @Model.Type</li>
-	<li>Contact: @email</li>
-
-	<div class="list-group">
-		<a href="#" class="list-group-item">@Model.Nom</a>
-		<a href="#" class="list-group-item">Prenom: @Model.Prenom</a>
-		<a href="#" class="list-group-item">@Model.Identifiant</a>
-		<a href="#" class="list-group-item"> @Model.Type</a>
+	<div class="list-group list-group-horizontal-sm" id="userlist">
+		<a href="#" class="list-group-item">Nom : @Model.Nom</a>
+		<a href="#" class="list-group-item">Prenom : @Model.Prenom</a>
+		<a href="#" class="list-group-item">Identifiant : @Model.Identifiant</a>
+		<a href="#" class="list-group-item">Type :  @Model.Type</a>
+		<a href="#" class="list-group-item">Email :  @email</a>
 	</div>
 
-	<li>
+	<p>
 		<a href="@Url.Action("ListUser", "Account")">
-			<span class="glyphicon glyphicon-download "></span> Retour
+			<span class="glyphicon glyphicon-backward"></span> Retour
 		</a>
-	</li>
+	</p>
 </ul>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+	Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">User details</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="modal-header">
+					<h4 class="modal-title" id="myModalLabel">@Model.Nom</h4>
+				</div>
+				<ul>
+					<div class="list-group list-group-horizontal-sm" id="userlist">
+						<a href="#" class="list-group-item">Nom : @Model.Nom</a>
+						<a href="#" class="list-group-item">Prenom : @Model.Prenom</a>
+						<a href="#" class="list-group-item">Identifiant : @Model.Identifiant</a>
+						<a href="#" class="list-group-item">Type :  @Model.Type</a>
+						<a href="#" class="list-group-item">Email :  @email</a>
+					</div>
+
+					<p>
+						<a href="@Url.Action("ListUser", "Account")">
+							<span class="glyphicon glyphicon-backward"></span> Retour
+						</a>
+					</p>
+				</ul>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>

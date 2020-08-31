@@ -28,8 +28,10 @@ namespace Portofolio
             return bdd.Utilisateurs.ToList();
         }
 
-        public User CreerUtilisateur(string nom,string prenom, string identifiant, string motdepasse, TypeEnum type)
+        public User CreerUtilisateur(string nom,string prenom, string identifiant, string motdepasse, TypeEnum type, string email , string telephone)
         {
+			Contact cont = new Contact{ Email = email,
+				                       Telephone = telephone };
 			string motDePasseEncode = EncodeMD5(motdepasse);
 			User user = new User();
             user.Nom = nom;
@@ -37,22 +39,30 @@ namespace Portofolio
             user.Identifiant = identifiant;
             user.Motdepasse = motDePasseEncode;
             user.Type = type;
-      
-            bdd.Utilisateurs.Add(user);
+			user.Contact = cont;
+
+			bdd.Utilisateurs.Add(user);
             bdd.SaveChanges();
             return user; 
         }
-		public User ModifierUtilisateur(int id ,string nom,string prenom , string identifiant, string motdepasse, TypeEnum type)
+		public User ModifierUtilisateur(int id , string nom,string prenom , string identifiant, string motdepasse, TypeEnum type ,string email , string telephone)
 		{
 			string motDePasseEncode = EncodeMD5(motdepasse);
 			User userTrouver = bdd.Utilisateurs.FirstOrDefault(u => u.Id == id); 
-			if (userTrouver != null)
+			if (userTrouver!=null)
 			{
+				Contact cont = new Contact
+				{
+					Email = email,
+					Telephone = telephone
+				};
 				userTrouver.Nom = nom;
 				userTrouver.Prenom = prenom;
 				userTrouver.Identifiant = identifiant;
 				userTrouver.Motdepasse = motDePasseEncode;
 				userTrouver.Type = type;
+				userTrouver.Contact = cont;
+				userTrouver.Contact.Telephone = cont.Telephone; 
 		        bdd.SaveChanges();
 			}
 			return userTrouver;

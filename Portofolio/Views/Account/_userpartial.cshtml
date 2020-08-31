@@ -7,9 +7,16 @@
 	<td>@Model.User.Identifiant</td>
 
 	<td>
-		@Html.ActionLink("Edit", "ModifierUser", "Account", new { id = Model.User.Id }) |
-		@Html.ActionLink("Details", "UserDetail", new { id = Model.User.Id })  |
-
+		@Html.ActionLink("Edit", "ModifierUser", new { id = Model.User.Id }) |
+		@Html.ActionLink("Details", "UserDetail", new { id = Model.User.Id })|
 		<button name="supprimer-user" id="user-action-supprimer" class="btn  btn-danger" type="button">Supprimer</button>
+
+		<!--
+		<input type="button" class="btn btn-info" value="detaileur" onclick="location.href='@Url.Action("ModifierUser", "Account")'" />
+		<input type="button" class="btn btn-info" value="etr" data-toggle="modal" data-target="#exampleModal" onclick="location.href='@Url.Action("UserDetail", new { id = Model.User.Id })'" />
+
+		metrre@Html.ActionLink("Details", "UserDetail", new { id = Model.User.Id }, new { data_toggle = "modal", data_target = "#Delete", id = "deleteActionLink", data_parameter = "<here goes your parameter>" })
+		-->
+
 	</td>
 </tr>

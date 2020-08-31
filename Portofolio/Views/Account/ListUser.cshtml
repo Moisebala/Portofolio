@@ -7,6 +7,24 @@
 <h2>Liste des Utilisateurs</h2>
 <p>
 	@Html.ActionLink("Nouvel Utilisateur", "Register", "Account", null, new { @class = "btn btn-primary" })
+
+	@using (Html.BeginForm("Search", "Home", FormMethod.Post))
+	{
+		<table>
+			<tr>
+				<td>
+					<input type="text" class="form-control" placeholder="Search">
+				</td>
+				<td>
+					<div class="input-group-btn">
+						<button class="btn btn-primary" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</td>
+			</tr>
+		</table>
+	}
 </p>
 <div id="user-alert">
 </div>
@@ -31,6 +49,7 @@
 
 	</div>
 </div>
+
 @Scripts.Render("~/bundles/jquery")
 
 <script type="text/javascript">
