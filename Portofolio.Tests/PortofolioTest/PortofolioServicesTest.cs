@@ -23,6 +23,7 @@ namespace Portofolio.Tests
 
 			dal = new PortofolioServices();
 		}
+
 		[TestMethod]
         public void ObtenirLaListdesUtilisateur_Et_Verifier_Que_CestPas_Vide()
         {
@@ -30,8 +31,8 @@ namespace Portofolio.Tests
 			//Database.SetInitializer(init);
 			//init.InitializeDatabase(new PortofolioContext());
 			
-		        User user1 = dal.CreerUtilisateur("Jena", "balla", "jballa","252556", TypeEnum.Admin);
-				User user2 = dal.CreerUtilisateur("Moise", "Alex", "MAlex", "256736", TypeEnum.Admin);
+		        User user1 = dal.CreerUtilisateur("Jena", "balla", "jballa","252556", TypeEnum.Admin, "jena@gmail.com" , "514255823");
+				User user2 = dal.CreerUtilisateur("Moise", "Alex", "MAlex", "256736", TypeEnum.Admin, "jena@gmail.com", "514255823");
 
 				List<User> utilisateurs = dal.ObtientTousLesUtilisateurs();
 
@@ -43,11 +44,11 @@ namespace Portofolio.Tests
 		public void ModifierUser_CreationDUnNouveauUserEtChangementNom_LaModificationEstCorrecteApresRechargement()
 		{
 
-			User user1 = dal.CreerUtilisateur("Mo", "balla", "mballa", "252556", TypeEnum.Admin);
+			User user1 = dal.CreerUtilisateur("Mo", "balla", "mballa", "252556", TypeEnum.Admin, "jena@gmail.com", "514255823");
 			List<User> utilisateurs = dal.ObtientTousLesUtilisateurs();
 			int id = utilisateurs.FirstOrDefault(r => r.Identifiant == "mballa").Id;
 
-			dal.ModifierUtilisateur(id, "Mo", "balla", "zayland", "123546", TypeEnum.Stantard);
+			dal.ModifierUtilisateur(id, "Mo", "balla", "zayland", "123546", TypeEnum.Stantard, "jena@gmail.com", "514255823");
 
 			utilisateurs = dal.ObtientTousLesUtilisateurs();
 			Assert.IsNotNull(utilisateurs);
@@ -61,11 +62,11 @@ namespace Portofolio.Tests
 		public void ValiderUtilisateurExisteetCapabledetrIdentifier()
 		{
 
-			User user1 = dal.CreerUtilisateur("Mo", "balla", "mballa", "252556", TypeEnum.Admin);
+			User user1 = dal.CreerUtilisateur("Mo", "balla", "mmmballa", "252556", TypeEnum.Admin, "jena@gmail.com", "514255823");
 			List<User> utilisateurs = dal.ObtientTousLesUtilisateurs();
 		
-			bool existe = dal.UtilisateurExiste("mballa");
-			User userauth = dal.Authentifier("mballa", "252556");
+			bool existe = dal.UtilisateurExiste("mmmballa");
+			User userauth = dal.Authentifier("mmmballa", "252556");
 
 			Assert.IsTrue(existe);
 			Assert.IsNotNull(userauth);

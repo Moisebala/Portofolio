@@ -285,6 +285,10 @@
     <Compile Include="Migrations\202005170252073_initial.Designer.cs">
       <DependentUpon>202005170252073_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008310044258_InitialMigrations.cs" />
+    <Compile Include="Migrations\202008310044258_InitialMigrations.Designer.cs">
+      <DependentUpon>202008310044258_InitialMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ModelsView\LoginViewModel.cs" />
     <Compile Include="ModelsView\UserModelView.cs" />
@@ -338,6 +342,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202005170252073_initial.resx">
       <DependentUpon>202005170252073_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008310044258_InitialMigrations.resx">
+      <DependentUpon>202008310044258_InitialMigrations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
